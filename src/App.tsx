@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./components/navbar/index"; // Navbar import 추가
 import Chatting from "./pages/chatting/index.tsx";
 import Trade from "./pages/trade/index.tsx";
-import TradeItemDetail from "./pages/trade/tradeItem/TradeItemDetail.tsx"; 
 import Mypage from "./pages/mypage/index.tsx";
 import Main from "./pages/main/index.tsx";
 import ErrorBoundary from "./components/ErrorBoundary.tsx";
+import MyPageLayout from "./pages/mypage/index.tsx";
+import MyArea from "./pages/mypage/components/MyArea.tsx";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -29,7 +29,26 @@ export default function App() {
     },
     {
       path: "mypage",
-      element: <Mypage />,
+      element: <MyPageLayout />,
+      children: [
+        { index: true, element: <Navigate to="area" replace /> },
+        {
+          path: "area",
+          element: <MyArea />,
+        },
+        {
+          path: "like",
+          element: null,
+        },
+        {
+          path: "buy",
+          element: null,
+        },
+        {
+          path: "sell",
+          element: null,
+        },
+      ],
       errorElement: <ErrorBoundary />,
     },
     {
