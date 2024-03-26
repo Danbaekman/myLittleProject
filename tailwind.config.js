@@ -2,8 +2,19 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    
+    extend: {
+      colors: {
+        customColor: {
+          '150': '#FFF1AA',
+            
+        },
+      },
+
+      fontWeight: {
+        custom: '900',
+      }
+    },
   },
   plugins: [],
-};
-
+}
