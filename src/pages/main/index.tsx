@@ -1,4 +1,5 @@
 import { useStore } from "../../store";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   const { bears, increasePopulation, removeAllBears } = useStore();
@@ -8,6 +9,11 @@ export default function Main() {
       <h1>{bears}</h1>
       <button onClick={increasePopulation}>one up</button>
       <button onClick={removeAllBears}>remove</button>
+      <nav>
+      <Link to="/trade">Trade</Link>
+        
+      </nav>
+      
     </div>
   );
 }
